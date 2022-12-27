@@ -19,3 +19,19 @@ function topFunction() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
+
+// TRANSITION ANIMATION
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        console.log(entry)
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show-animate');
+        } else {
+            entry.target.classList.remove('show-animate');
+        }
+    });
+});
+
+const hiddenElements = document.querySelectorAll('.hidden-animate-left, .hidden-animate-right, .hidden-animate-top, .hidden-animate-bottom, .hidden-animate-in');
+hiddenElements.forEach((el) => observer.observe(el));
